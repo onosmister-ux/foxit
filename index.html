@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VoltaraFunding - Forex Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo"><span>V</span> VoltaraFunding</div>
+      <button class="close-btn" id="closeSidebar">✕</button>
+    </div>
+    <nav class="menu">
+      <a class="menu-item active" data-page="Dashboard"><i>◧</i> Dashboard</a>
+      <a class="menu-item"><i>◨</i> Trading Account</a>
+      <a class="menu-item"><i>🏆</i> Leaderboard</a>
+      <a class="menu-item"><i>⚔</i> Competitions</a>
+      <a class="menu-item"><i>◐</i> Affiliate Portal</a>
+      <a class="menu-item"><i>✦</i> Certificates</a>
+      <a class="menu-item"><i>◍</i> Profit & Share</a>
+      <a class="menu-item"><i>▭</i> Billing and Accounts</a>
+      <a class="menu-item"><i>⬇</i> Downloads</a>
+      <a class="menu-item"><i>◫</i> Accounts</a>
+      <a class="menu-item"><i>☏</i> Customer Support</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="menu-item small"><i>⚙</i> Settings</a>
+      <a class="menu-item small"><i>?</i> Go to FAQ</a>
+      <button class="start-btn">Start Challenge</button>
+      <div class="user-card">
+        <img src="https://i.pravatar.cc/100?img=33" alt="user"/>
+        <div><b>George Chichua</b><span>George@gmail.com</span></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="ticker">
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="hamburger" id="openSidebar">☰</button>
+        <div>
+          <h1>Dashboard</h1>
+          <p>You can see your dashboard information from here.</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <select class="select"><option>Select account - #1281951</option><option>#1281952 Live</option></select>
+        <div class="status-pill"><span class="dot"></span> Account Status</div>
+        <div class="demo-pill">Demo</div>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="equity">Current Equity</button>
+      <button class="tab" data-tab="limits">Check Limits</button>
+      <button class="tab" data-tab="profit">Profit Summary</button>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card"><label>Equity Every Minute</label><h2>$124,320.50</h2><span class="up">↗ +2.4% today</span></div>
+      <div class="stat-card"><label>Current Equity</label><h2>$124,320.50</h2><span class="muted">Balance: $120,000.00</span></div>
+      <div class="stat-card warn"><label>Max Equity Stop Out For The Day</label><h2>$118,450.00</h2><span class="down">Daily loss limit: -$5,550</span></div>
+    </div>
+
+    <div class="top-traders">
+      <div class="trader-card gold"><div class="badge">🏅</div><div><small>Highest Reward</small><b>Alex Morgan — $42,190</b><span>+18.2% this month</span></div></div>
+      <div class="trader-card silver"><div class="badge">🥈</div><div><small>Best Win Ratio</small><b>Sofia Chen — 92.4%</b><span>131 wins • 11 losses</span></div></div>
+      <div class="trader-card bronze"><div class="badge">🥉</div><div><small>Fastest Evaluation</small><b>James Park — 4 days</b><span>Phase 1 & 2 cleared</span></div></div>
+    </div>
+
+    <div class="middle-grid">
+      <div class="card chart-card">
+        <div class="card-head">
+          <h3>Equity Growth</h3>
+          <div class="legend"><span class="dot blue"></span> Balance <span class="dot dark"></span> Equity <select id="rangeSel"><option>Monthly</option><option>Weekly</option></select></div>
+        </div>
+        <div class="chart-wrap" id="chartWrap">
+          <svg id="equitySvg" viewBox="0 0 700 240" preserveAspectRatio="none"></svg>
+          <div class="tooltip" id="tooltip"></div>
+        </div>
+        <div class="xlabels" id="xLabels"></div>
+      </div>
+
+      <div class="card winrate-card">
+        <div class="card-head"><h3>Current Win Rate</h3><button class="icon-btn">•••</button></div>
+        <div class="gauge-wrap">
+          <!-- FIXED GAUGE -->
+          <div class="gauge">
+            <svg viewBox="0 0 200 110" class="gauge-svg">
+              <path id="gaugeTrack" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#EEF2F7" stroke-width="16" stroke-linecap="round"/>
+              <path id="gaugeFill" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#2D9CDB" stroke-width="16" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="40.19" style="filter: drop-shadow(0 2px 8px rgba(45,156,219,0.35));"/>
+            </svg>
+            <div class="needle" id="needle"><div class="needle-line"></div><div class="needle-dot"></div></div>
+          </div>
+          <div class="gauge-center">
+            <b>84%</b>
+            <span>Current<br/>Percentage</span>
+          </div>
+        </div>
+        <div class="mini-stats">
+          <div class="mini"><label>Trades</label><b>142</b></div>
+          <div class="mini green"><label>Wins</label><b>119</b></div>
+          <div class="mini red"><label>Losses</label><b>23</b></div>
+        </div>
+        <div class="profit-factor"><span>● Profit Factor</span><b>2.84 • Excellent</b></div>
+      </div>
+    </div>
+
+    <div class="card table-card">
+      <div class="table-tabs">
+        <button class="t-tab active">Trading History</button>
+        <button class="t-tab">Trading Days</button>
+        <button class="t-tab">IP Address</button>
+        <button class="t-tab">Notifications</button>
+      </div>
+      <div class="table-filters">
+        <label>Type <select id="typeFilter"><option>All Types</option><option>Buy</option><option>Sell</option></select></label>
+        <label>Symbol <select id="symbolFilter"><option>All Symbols</option><option>GBPJPY</option><option>EURUSD</option><option>XAUUSD</option><option>GBPUSD</option></select></label>
+        <button class="filter-btn">📅 Open Time</button>
+        <button class="filter-btn">📅 Close Time</button>
+        <div class="search"><input id="searchInput" placeholder="Search ticket or symbol"/></div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Ticket</th><th>Type</th><th>Open Time</th><th>Close Time</th><th>Symbol</th><th>Lots</th><th>Net Profit</th></tr></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer>Voltara Funding • Prop Firm Dashboard • v2.4.1</footer>
+  </main>
+</div>
+<script type="module" src="js/script.js"></script>
+</body>
+</html>
