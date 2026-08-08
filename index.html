@@ -116,6 +116,28 @@
       </div>
     </div>
 
+    <div class="card favorites-card" style="margin-bottom:16px; padding:0;">
+      <div class="card-head">
+        <h3>⭐ Favorites Manager</h3>
+        <button class="icon-btn" id="clearFavs">Clear all</button>
+      </div>
+      <div style="padding:12px;">
+		<div class="favorites-controls">
+          <select id="addFavSelect" class="select" style="flex:1;">
+            <option value="USD/EUR">USD/EUR</option>
+            <option value="USD/GBP">USD/GBP</option>
+            <option value="USD/JPY">USD/JPY</option>
+            <option value="EUR/GBP">EUR/GBP</option>
+            <option value="GBP/JPY">GBP/JPY</option>
+            <option value="USD/CAD">USD/CAD</option>
+          </select>
+          <button id="addFavBtn" class="tab active" style="height:36px;">+ Add Pair</button>
+        </div>
+        <!-- THIS is where favorites render -->
+        <div id="favoritesContainer"></div>
+      </div>
+    </div>
+
     <div class="card table-card">
       <div class="table-tabs">
         <button class="t-tab active">Trading History</button>
@@ -142,6 +164,6 @@
   </main>
 </div>
 <script type="module" src="js/script.js"></script>
-<script type="module" src="js/pages/trends.js"></script>
+<script type="module" src="js/pages/dashboard.js"></script>
 </body>
 </html>

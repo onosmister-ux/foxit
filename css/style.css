@@ -151,3 +151,122 @@ footer{text-align:center;font-size:11px;color:var(--color-text-footer);margin-to
   .ticker{margin:0 -14px 12px}
   .stats-grid,.top-traders{grid-template-columns:1fr}
 }
+
+/* === Favorites Manager - polished === */
+.favorites-card{
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--color-border-light);
+}
+.favorites-card .card-head h3{
+  display:flex; align-items:center; gap:6px;
+  font-size:14px; font-weight:600;
+}
+#favoritesContainer{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.fav-card{
+  display:flex; 
+  justify-content:space-between; 
+  align-items:center;
+  padding:12px 14px;
+  background:var(--color-bg);
+  border:1px solid var(--color-border-light);
+  border-radius:12px;
+  transition:.2s;
+}
+.fav-card:hover{
+  border-color:var(--color-border);
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(10,37,64,0.06);
+}
+.fav-card b{
+  font-size:13.5px;
+  color:var(--color-primary);
+  letter-spacing:-0.2px;
+}
+.fav-rate{
+  font-size:12px;
+  color:var(--color-text-muted);
+  font-weight:500;
+  margin-top:3px;
+  display:block;
+}
+.fav-card.alert-triggered{
+  border-color:var(--color-danger-border);
+  background:var(--color-danger-bg-alt);
+  animation:pulseAlert 1.5s infinite;
+}
+@keyframes pulseAlert{
+  0%{box-shadow:0 0 0 0 rgba(217,45,32,0.15)}
+  70%{box-shadow:0 0 0 8px rgba(217,45,32,0)}
+  100%{box-shadow:0 0 0 0 rgba(217,45,32,0)}
+}
+.fav-actions button{
+  width:32px;
+  height:32px;
+  border-radius:8px;
+  border:1px solid var(--color-border);
+  background:#fff;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  font-size:14px;
+  color:var(--color-text-faint);
+  transition:.15s;
+}
+.fav-actions button:hover{
+  background:var(--color-danger-bg);
+  color:var(--color-danger);
+  border-color:var(--color-danger-border);
+}
+
+/* Controls row */
+.favorites-controls{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+#addFavSelect{
+  height:42px;
+  border-radius:12px;
+  border:1px solid var(--color-border);
+  padding:0 14px;
+  font-size:13.5px;
+  background:#fff;
+  flex:1;
+  outline:none;
+}
+#addFavSelect:focus{
+  border-color:var(--color-primary);
+  box-shadow:0 0 0 3px rgba(10,37,64,0.08);
+}
+#addFavBtn{
+  height:42px;
+  padding:0 18px;
+  border-radius:12px;
+  background:var(--color-primary);
+  color:#fff;
+  border:0;
+  font-weight:600;
+  font-size:13px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+#clearFavs{
+  height:32px;
+  padding:0 12px;
+  border-radius:8px;
+  border:1px solid var(--color-border);
+  background:#fff;
+  font-size:12.5px;
+  cursor:pointer;
+  color:var(--color-text-muted);
+}
+#clearFavs:hover{
+  background:var(--color-bg-hover);
+}
