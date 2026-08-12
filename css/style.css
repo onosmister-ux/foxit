@@ -270,3 +270,73 @@ footer{text-align:center;font-size:11px;color:var(--color-text-footer);margin-to
 #clearFavs:hover{
   background:var(--color-bg-hover);
 }
+
+/* === Forex News === */
+.refresh-btn{
+  height:32px;
+  padding:0 12px;
+  border-radius:8px;
+  border:1px solid var(--color-border);
+  background:#fff;
+  font-size:12.5px;
+  cursor:pointer;
+  color:var(--color-text-muted);
+  transition:.15s;
+}
+.refresh-btn:hover{
+  background:var(--color-bg-hover);
+}
+.news-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+  gap:10px;
+  padding:12px 18px 18px;
+}
+.news-item{
+  display:block;
+  padding:12px 14px;
+  background:var(--color-bg);
+  border:1px solid var(--color-border-light);
+  border-radius:12px;
+  text-decoration:none;
+  color:inherit;
+  transition:.2s;
+}
+.news-item:hover{
+  border-color:var(--color-border);
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(10,37,64,0.06);
+}
+.news-item-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:6px;
+}
+.news-source{
+  font-size:11px;
+  font-weight:600;
+  color:var(--color-accent-blue);
+  text-transform:uppercase;
+  letter-spacing:.3px;
+}
+.news-time{
+  font-size:11px;
+  color:var(--color-text-faint);
+}
+.news-headline{
+  font-size:13px;
+  line-height:1.4;
+  color:var(--color-primary);
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.news-status{
+  grid-column:1/-1;
+  padding:20px;
+  text-align:center;
+  color:var(--color-text-faint);
+  font-size:12.5px;
+}
